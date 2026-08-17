@@ -1,94 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Personal Page</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  
-  <body class="body">
-    <div class="scroll-progress"></div>
 
-    <nav class="dot-nav">
-      <a href="#" class="dot" data-label="Home"></a>
-      <a href="#section-do" class="dot" data-label="What I do"></a>
-      <a href="#section-use" class="dot" data-label="What I use"></a>
-      <a href="#section-interested" class="dot" data-label="What I'm interested in"></a>
-      <a href="#section-outside" class="dot" data-label="Outside coding"></a>
-      <a href="#section-socials" class="dot" data-label="Socials"></a>
-    </nav>
-    
-    <main>
-      <header class="hero">
-        <div id="section-hero">
-          <h1 class="name">Hi, I'm Dan</h1>
-          <p class="description">A student from Republic Of Moldova.</p>
-          <a href="#section-do" class="btn btn-filled">View More</a>
+<head>
+  <meta charset="utf-8">
+  <title>Personal Page</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,GRAD@8..144,100..1000,-200..150&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="body">
+  <div class="scroll-progress"></div>
+
+  <nav class="dot-nav">
+    <a href="#" class="dot" data-label="Home"></a>
+    <a href="#section-do" class="dot" data-label="What I do"></a>
+    <a href="#section-use" class="dot" data-label="What I use"></a>
+    <a href="#section-interested" class="dot" data-label="What I'm interested in"></a>
+    <a href="#section-outside" class="dot" data-label="Outside coding"></a>
+    <a href="#section-socials" class="dot" data-label="Socials"></a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div id="section-hero">
+        <h1 class="name">Hi, I'm Dan</h1>
+        <p class="description">A student from Republic Of Moldova.</p>
+        <a href="#section-do" class="btn btn-filled">View More</a>
+      </div>
+    </header>
+
+    <div class="scroll-container">
+      <section class="section" data-side="left" id="section-do">
+        <div class="section-inner">
+          <h2 class="selection">What I do</h2>
+          <p class="detail">I mostly self-host stuff on my own servers and mess around with infra more than I write
+            code.</p>
+          <a href="html/do.html" class="btn btn-tonal">More on infra</a>
         </div>
-      </header>
+      </section>
 
-      <div class="scroll-container">
-  <section class="section" data-side="left" id="section-do">
-    <div class="section-inner">
-      <h2 class="selection">What I do</h2>
-      <p class="detail">I mostly self-host stuff on my own servers and mess around with infra more than I write code.</p>
-    </div>
-  </section>
+      <section class="section" data-side="right" id="section-use">
+        <div class="section-inner">
+          <h2 class="selection">What I use</h2>
+          <p class="detail">I mostly use OpenSUSE Tumbleweed, but I also use Arch Linux. I use KDE Plasma as my main DE.
+          </p>
+          <a href="html/use.html" class="btn btn-tonal">Full setup & gear</a>
+        </div>
+      </section>
 
-  <section class="section" data-side="right" id="section-use">
-    <div class="section-inner">
-      <h2 class="selection">What I use</h2>
-      <p class="detail">I mostly use OpenSUSE Tumbleweed, but I also use Arch Linux. I use KDE Plasma as my main DE.</p>
-    </div>
-  </section>
+      <section class="section" data-side="left" id="section-interested">
+        <div class="section-inner">
+          <h2 class="selection">What I'm interested in</h2>
+          <p class="detail">I am interested in open source software, servers, and networking.</p>
+          <a href="html/interested.html" class="btn btn-tonal">More topics</a>
+        </div>
+      </section>
 
-  <section class="section" data-side="left" id="section-interested">
-    <div class="section-inner">
-      <h2 class="selection">What I'm interested in</h2>
-      <p class="detail">I am interested in open source software, servers, and networking.</p>
-    </div>
-  </section>
+      <section class="section" data-side="right" id="section-outside">
+        <div class="section-inner">
+          <h2 class="selection">What I like outside coding and doing infra</h2>
+          <p class="detail">I like video games and I also enjoy listening to music. Occasionally I repair phones and
+            laptops.</p>
+          <a href="html/outside.html" class="btn btn-tonal">More outside coding</a>
+        </div>
+      </section>
 
-  <section class="section" data-side="right" id="section-outside">
-    <div class="section-inner">
-      <h2 class="selection">What I like outside coding and doing infra</h2>
-      <p class="detail">I like video games and I also enjoy listening to music. Ocasionaly I repair phones and laptops.</p>
+      <section class="section" data-side="left" id="section-socials">
+        <div class="section-inner">
+          <h2 class="selection">Socials</h2>
+          <p class="detail">If you want to get in touch, feel free to reach out!</p>
+        </div>
+      </section>
     </div>
-  </section>
-
-  <section class="section" data-side="left" id="section-socials">
-    <div class="section-inner">
-      <h2 class="selection">Socials</h2>
-      <p class="detail">if you want to get in touch, feel free to reach out!</p>
-    </div>
-  </section>
-  </div>
-    
 
     <footer class="socials">
       <a href="https://t.me/Dany0443" target="_blank" rel="noopener" class="social-icon" aria-label="Telegram">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m22 2-7 20-4-9-9-4Z" />
+          <path d="M22 2 11 13" />
+        </svg>
       </a>
       <a href="https://github.com/Dany0443" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.35-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.6.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.35-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.6.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
+        </svg>
       </a>
-      <a href="mailto:danzcrackz@gmail.com" class="social-icon" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2.2.5 7.3 5.6a.8.8 0 0 0 1 0L19.8 6H4.2ZM4 8.1V18h16V8.1l-7.14 5.47a2.3 2.3 0 0 1-2.72 0L4 8.1Z"/></svg>
-      </a>
+      <button class="social-icon" id="emailBtn" aria-label="Copy Email">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2.2.5 7.3 5.6a.8.8 0 0 0 1 0L19.8 6H4.2ZM4 8.1V18h16V8.1l-7.14 5.47a2.3 2.3 0 0 1-2.72 0L4 8.1Z" />
+        </svg>
+      </button>
       <a href="https://discord.gg/UyJyux3Yvg" target="_blank" rel="noopener" class="social-icon" aria-label="Discord">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 5.4A17.6 17.6 0 0 0 15.9 4a12.7 12.7 0 0 0-.6 1.2 16.4 16.4 0 0 0-4.9 0A12.6 12.6 0 0 0 9.8 4a17.5 17.5 0 0 0-4.4 1.4C2.6 9.1 2 12.7 2.3 16.2a17.7 17.7 0 0 0 5.3 2.7c.4-.6.8-1.2 1.1-1.9-.6-.2-1.2-.5-1.7-.9l.4-.3c3.4 1.6 7 1.6 10.3 0l.4.3c-.5.4-1.1.7-1.7.9.3.7.7 1.3 1.1 1.9a17.6 17.6 0 0 0 5.3-2.7c.4-4.1-.6-7.6-2.5-10.8ZM9.7 14c-.9 0-1.6-.9-1.6-2s.7-2 1.6-2 1.6.9 1.6 2-.7 2-1.6 2Zm5.4 0c-.9 0-1.6-.9-1.6-2s.7-2 1.6-2 1.6.9 1.6 2-.7 2-1.6 2Z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.3 5.4A17.6 17.6 0 0 0 15.9 4a12.7 12.7 0 0 0-.6 1.2 16.4 16.4 0 0 0-4.9 0A12.6 12.6 0 0 0 9.8 4a17.5 17.5 0 0 0-4.4 1.4C2.6 9.1 2 12.7 2.3 16.2a17.7 17.7 0 0 0 5.3 2.7c.4-.6.8-1.2 1.1-1.9-.6-.2-1.2-.5-1.7-.9l.4-.3c3.4 1.6 7 1.6 10.3 0l.4.3c-.5.4-1.1.7-1.7.9.3.7.7 1.3 1.1 1.9a17.6 17.6 0 0 0 5.3-2.7c.4-4.1-.6-7.6-2.5-10.8ZM9.7 14c-.9 0-1.6-.9-1.6-2s.7-2 1.6-2 1.6.9 1.6 2-.7 2-1.6 2Zm5.4 0c-.9 0-1.6-.9-1.6-2s.7-2 1.6-2 1.6.9 1.6 2-.7 2-1.6 2Z" />
+        </svg>
       </a>
     </footer>
+    <div class="email-status" id="emailStatus" aria-live="polite"></div>
 
     <button class="scroll-arrow" id="scrollArrow" aria-label="Scroll to next section">
-      <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
+      <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12l7 7 7-7" />
       </svg>
     </button>
 
-    </main>
-    <script src="script.js"></script>
-  </body>
+  </main>
+  <script src="script.js"></script>
+</body>
+
 </html>
