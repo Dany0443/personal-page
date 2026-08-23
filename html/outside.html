@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,GRAD@8..144,100..1000,-200..150&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,GRAD@8..144,400..850,0..25&display=swap"
     rel="stylesheet">
 </head>
 
@@ -116,10 +116,10 @@
     async function loadLastFM() {
       try {
         const res = await fetch('https://lastfm-last-played.biancarosa.com.br/Dany0443/latest-song');
-        if (!res.ok) return;
+        if (!res.ok) throw new Error('Proxy status ' + res.status);
         const data = await res.json();
         const song = data.track;
-        if (!song) return;
+        if (!song) throw new Error('No track data');
 
         const isPlaying = song['@attr'] && song['@attr'].nowplaying === 'true';
         const titleEl = document.getElementById('musicTitle');

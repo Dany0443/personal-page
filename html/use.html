@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,GRAD@8..144,100..1000,-200..150&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,GRAD@8..144,400..850,0..25&display=swap"
     rel="stylesheet">
 </head>
 
@@ -21,7 +21,7 @@
     <h1 class="subpage-title">What I use</h1>
 
     <div class="subpage-content">
-      <p>A personal list of the operating systems, main PC hardware components, peripherals, mobile daily driver, and
+      <p>A personal list of the operating systems, main PC hardware components, work laptop, peripherals, home servers, mobile daily driver, and
         in-house networking gear I use every day.</p>
 
       <div class="subpage-section">
@@ -74,6 +74,29 @@
       </div>
 
       <div class="subpage-section">
+        <h2 class="subpage-subtitle">Work Laptop</h2>
+        <p>My portable machine used primarily for work, mobile tasks, and as a reliable backup workstation.</p>
+        <div class="spec-list">
+          <div class="spec-row">
+            <span class="spec-key">CPU:</span>
+            <span class="spec-val">AMD Ryzen 7 5800H</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">GPU:</span>
+            <span class="spec-val">NVIDIA GeForce GTX 1650</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">RAM:</span>
+            <span class="spec-val">32GB DDR4</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Storage:</span>
+            <span class="spec-val">Samsung 980 500GB NVMe SSD</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subpage-section">
         <h2 class="subpage-subtitle">Peripherals</h2>
         <div class="spec-list">
           <div class="spec-row">
@@ -97,6 +120,51 @@
             <span class="spec-val"><a href="https://sg.aoc.com/product/24G4" target="_blank" rel="noopener"
                 class="text-link">AOC 24G4 (24" 1080p 180Hz)</a></span>
           </div>
+        </div>
+      </div>
+
+      <div class="subpage-section">
+        <h2 class="subpage-subtitle">Servers</h2>
+        <p>I run two dedicated headless machines for my homelab and background services. Both operate purely via the command line and are managed remotely from my main PC over SSH. Both systems also feature battery backup power to keep everything running smoothly during sudden outages.</p>
+
+        <div class="server-block">
+          <h3 class="server-heading">Primary Server (Ubuntu CLI)</h3>
+          <p>The machine that sparked my journey into Linux and gave me the confidence to leave Windows behind completely.</p>
+          <div class="spec-list">
+            <div class="spec-row">
+              <span class="spec-key">CPU:</span>
+              <span class="spec-val">Intel Core i3-6006U</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">RAM:</span>
+              <span class="spec-val">12GB DDR3</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Storage:</span>
+              <span class="spec-val">128GB SSD + 512GB HDD</span>
+            </div>
+          </div>
+          <p class="subtle-note">Mainly used for hosting my personal websites and running my entire self-hosted stack.</p>
+        </div>
+
+        <div class="server-block">
+          <h3 class="server-heading">Secondary Server (Debian CLI)</h3>
+          <p>Built to strengthen my sysadmin skills and distribute background workloads across a separate dedicated node.</p>
+          <div class="spec-list">
+            <div class="spec-row">
+              <span class="spec-key">CPU:</span>
+              <span class="spec-val">Intel Core i3-1115G4</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">RAM:</span>
+              <span class="spec-val">8GB DDR4</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-key">Storage:</span>
+              <span class="spec-val">256GB NVMe SSD</span>
+            </div>
+          </div>
+          <p class="subtle-note">Mainly dedicated to hosting game servers and running heavier tasks.</p>
         </div>
       </div>
 

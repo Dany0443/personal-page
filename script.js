@@ -141,14 +141,18 @@ if (emailBtn && emailStatus) {
     lastClick = now;
 
     const email = 'danzcrackz@gmail.com';
-    navigator.clipboard.writeText(email).then(() => {
-      emailStatus.textContent = 'Email copied to clipboard';
-      emailStatus.classList.add('show');
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email).then(() => {
+        emailStatus.textContent = 'Email copied to clipboard';
+        emailStatus.classList.add('show');
 
-      clearTimeout(copyTimer);
-      copyTimer = setTimeout(() => emailStatus.classList.remove('show'), 2000);
-    }).catch(() => {
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => emailStatus.classList.remove('show'), 2000);
+      }).catch(() => {
+        window.location.href = `mailto:${email}`;
+      });
+    } else {
       window.location.href = `mailto:${email}`;
-    });
+    }
   });
 }
