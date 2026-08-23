@@ -55,9 +55,15 @@ function goToStop(index) {
 // sync ui with scroll
 function onScroll() {
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const progressRatio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+
   if (progress && maxScroll > 0) {
-    progress.style.width = `${(window.scrollY / maxScroll) * 100}%`;
+    progress.style.transform = `scaleX(${progressRatio})`;
   }
+
+  // ambient scroll-linked mesh parallax
+  const gridY = window.scrollY * 0.15;
+  document.documentElement.style.setProperty('--bg-grid-y', `${gridY}px`);
 
   const activeIndex = getActiveIndex();
   dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
@@ -77,12 +83,17 @@ window.addEventListener('scroll', onScroll, { passive: true });
 
 // instant jump to hash target when coming back from subpages
 if (window.location.hash) {
+  document.body.classList.add('instant-return');
+  document.querySelectorAll('.section-inner').forEach((inner) => inner.classList.add('in'));
   const target = document.querySelector(window.location.hash);
   if (target) {
     target.scrollIntoView({ behavior: 'instant', block: 'center' });
-    const inner = target.querySelector('.section-inner');
-    if (inner) inner.classList.add('in');
   }
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.classList.remove('instant-return');
+    });
+  });
 }
 
 onScroll();
