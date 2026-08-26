@@ -53,17 +53,25 @@ function goToStop(index) {
 }
 
 // sync ui with scroll
+let isScrollTicking = false;
+
 function onScroll() {
+  if (!isScrollTicking) {
+    requestAnimationFrame(() => {
+      updateScrollState();
+      isScrollTicking = false;
+    });
+    isScrollTicking = true;
+  }
+}
+
+function updateScrollState() {
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
   const progressRatio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
   if (progress && maxScroll > 0) {
     progress.style.transform = `scaleX(${progressRatio})`;
   }
-
-  // ambient scroll-linked mesh parallax
-  const gridY = window.scrollY * 0.15;
-  document.documentElement.style.setProperty('--bg-grid-y', `${gridY}px`);
 
   const activeIndex = getActiveIndex();
   dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
@@ -167,3 +175,5 @@ if (emailBtn && emailStatus) {
     }
   });
 }
+
+// yes i used ai to help write this code but i built major part of this website :(

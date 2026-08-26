@@ -91,12 +91,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
-  background-position: center var(--bg-grid-y, 0px);
-  mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 30%, transparent 95%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 30%, transparent 95%);
-  opacity: 0.55;
+  opacity: 0.6;
 }
 
 .hero {
@@ -377,9 +374,7 @@ a.text-link:hover {
   gap: 12px;
   z-index: 50;
   padding: 12px 8px;
-  background: rgba(18, 18, 20, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: var(--md-surface-container-high);
   border: 1px solid var(--md-outline-variant);
   border-radius: var(--shape-full);
   box-shadow: var(--el-1);
