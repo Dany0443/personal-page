@@ -267,6 +267,7 @@ const upd = () => {
   const m = root.scrollHeight - innerHeight, p = m > 0 ? scrollY / m : 0;
   prog.style.strokeDashoffset = 1 - p;
   prog.style.strokeOpacity = p > .003 ? 1 : 0;
+  prog.style.opacity = p > .003 ? 1 : 0;
   const bottom = m > 0 && scrollY >= m - 4;
   if (!lock && bottom !== wasBottom) { wasBottom = bottom; syncActive(); }
 };

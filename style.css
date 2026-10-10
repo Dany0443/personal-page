@@ -119,7 +119,6 @@ body::before {
   fill: none;
   stroke-width: 4;
   stroke-linecap: round;
-  vector-effect: non-scaling-stroke;
 }
 
 .wave .t {
