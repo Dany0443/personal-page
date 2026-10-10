@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Roboto Flex';
+  src: url('fonts/RobotoFlex.woff2') format('woff2');
+  font-weight: 100 1000;
+  font-stretch: 25% 151%;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* palettes: flat hand picked colors in material 3 roles, each role is a light and dark pair.
    terracotta is the default, the palette button cycles through the others */
 :root {
