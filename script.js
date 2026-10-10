@@ -291,7 +291,7 @@ const snack = $('#snack');
 let snackT;
 const say = m => { snack.textContent = m; snack.classList.add('show'); clearTimeout(snackT); snackT = setTimeout(() => snack.classList.remove('show'), 2200); };
 $('#emailBtn').onclick = () => {
-  const mail = 'danzcrackz@gmail.com';
+  const mail = 'danzcrackz@pm.me';
   if (navigator.clipboard && isSecureContext) navigator.clipboard.writeText(mail).then(() => say('Email copied to clipboard')).catch(() => location.href = 'mailto:' + mail);
   else location.href = 'mailto:' + mail;
 };
