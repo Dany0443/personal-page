@@ -30,7 +30,9 @@
     <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
     <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></symbol>
     <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></symbol>
-    <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
     <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-1 1.5-2.2-.5-1.3.3-2.3 1.7-2.3H17a4 4 0 0 0 4-4c0-5-4-9.5-9-9.5z"/></symbol>
     <symbol id="b-gh" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.35-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.6.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></symbol>
     <symbol id="b-dc" viewBox="0 0 24 24"><path d="M20.3 5.4A17.6 17.6 0 0 0 15.9 4a12.7 12.7 0 0 0-.6 1.2 16.4 16.4 0 0 0-4.9 0A12.6 12.6 0 0 0 9.8 4a17.5 17.5 0 0 0-4.4 1.4C2.6 9.1 2 12.7 2.3 16.2a17.7 17.7 0 0 0 5.3 2.7c.4-.6.8-1.2 1.1-1.9-.6-.2-1.2-.5-1.7-.9l.4-.3c3.4 1.6 7 1.6 10.3 0l.4.3c-.5.4-1.1.7-1.7.9.3.7.7 1.3 1.1 1.9a17.6 17.6 0 0 0 5.3-2.7c.4-4.1-.6-7.6-2.5-10.8ZM9.7 14c-.9 0-1.6-.9-1.6-2s.7-2 1.6-2 1.6.9 1.6 2-.7 2-1.6 2Zm5.4 0c-.9 0-1.6-.9-1.6-2s.7-2 1.6-2 1.6.9 1.6 2-.7 2-1.6 2Z"/></symbol>
@@ -45,12 +47,12 @@
   <header class="top">
     <div class="tools">
       <button class="ib" id="hueBtn" aria-label="Change color"><svg class="ic"><use href="#i-palette"/></svg></button>
-      <button class="ib" id="themeBtn" aria-label="Toggle light and dark"><svg class="ic"><use href="#i-theme"/></svg></button>
+      <button class="ib" id="themeBtn" aria-label="Toggle light and dark"><svg class="ic"><use href="#i-moon"/></svg></button>
     </div>
   </header>
 
   <main>
-    <header class="hero" id="top">
+    <div class="hero" id="top">
       <div>
         <h1 id="title" aria-label="Hi, I'm Dan">Hi, I'm Dan</h1>
         <p class="sub">A student from Republic Of Moldova.</p>
@@ -63,7 +65,7 @@
         <div class="big" id="shape"></div>
         <div class="glyph">D</div>
       </div>
-    </header>
+    </div>
 
     <section id="infra">
       <h2 class="rv">What I do</h2>

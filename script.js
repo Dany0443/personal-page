@@ -1,13 +1,3 @@
-// apply saved theme and hue from local storage
-document.documentElement.classList.add('js');
-try {
-  const d = document.documentElement;
-  const c = localStorage.themeChoice;
-  const h = +localStorage.hue;
-  if (c === 'light' || c === 'dark') d.dataset.theme = c;
-  if (h) d.style.setProperty('--h', [285, 160, 25, 230, 335][h] || 285);
-} catch (e) {}
-
 // selector helpers
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -33,50 +23,74 @@ const stack = [
 ];
 
 // hardware and setup data
+// k is the layout slot: s3 is half width, s6 is full width, tall spans two rows
 const rigs = [
-  {t: 'OS & Environment', c: 'p', rows: [['OS', link('https://www.opensuse.org/', 'openSUSE') + ' Tumbleweed (KDE Plasma 6, Wayland)'], ['Why', 'Bleeding edge and stable'], ['Terminal & Shell', link('https://sw.kovidgoyal.net/kitty/', 'kitty') + ' + ' + link('https://fishshell.com/', 'fish shell')]]},
-  {t: 'Main PC Hardware', c: 's', n: "I built this PC myself from scratch right before the rampocalypse and I'm proud of it.", rows: [['OS', 'openSUSE Tumbleweed'], ['CPU', 'AMD Ryzen 5 7600X'], ['GPU', 'Gigabyte RX 7600 8GB OC'], ['RAM', 'Kingston Fury 2x8GB 5600 MT/s'], ['Primary SSD', 'Samsung 980 Pro 1TB'], ['Secondary SSD', 'Samsung 980 500GB'], ['PSU', 'MSI MAG A650BN']]},
-  {t: 'Work Laptop', c: 't', n: 'My portable machine used primarily for work, mobile tasks, and as a reliable backup workstation.', rows: [['OS', 'openSUSE Tumbleweed'], ['CPU', 'AMD Ryzen 7 5800H'], ['GPU', 'NVIDIA GeForce GTX 1650'], ['RAM', '32GB DDR4'], ['Storage', 'Samsung 980 500GB NVMe SSD']]},
-  {t: 'Peripherals', c: 'n', rows: [['Mouse', link('https://www.logitechg.com/en-us/products/gaming-mice/pro-x2-superlight-wireless-mouse.html', 'Logitech PRO X SUPERLIGHT 2')], ['Keyboard', link('https://hator.gg/keyboards/rockfall-3-mecha-tkl-wireless/', 'HATOR Rockfall 3 TKL Wireless')], ['Headphones', link('https://hator.gg/audio/hyperpunk-3x/', 'HATOR Hyperpunk 3X Wireless')], ['Monitor', link('https://sg.aoc.com/product/24G4', 'AOC 24G4 (24" 1080p 180Hz)')]]},
-  {h: 'Server', n: 'My homelab runs on one dedicated headless machine. It operates purely via the command line and is managed remotely from my main PC over SSH. It also has battery backup power to keep everything running smoothly during sudden outages.'},
-  {t: 'Main Server (Debian Headless)', c: 'p', w: 1, n: 'Built to strengthen my sysadmin skills. It hosts my personal websites, runs my entire self-hosted stack, and handles the game servers and heavier tasks.', rows: [['CPU', 'Intel Core i3-1115G4'], ['RAM', '8GB DDR4'], ['Storage', '256GB NVMe SSD + 500GB SSD + 500GB HDD']]},
-  {t: 'Phone', c: 't', rows: [['Device', link('https://store.google.com/product/pixel_9', 'Google Pixel 9') + ' running ' + link('https://grapheneos.org/', 'GrapheneOS')]]},
-  {t: 'In-House Networking', c: 'n', w: 1, n: 'I replaced the default ISP router setup entirely to have full control over traffic and hardware. The incoming fiber line connects directly into an SFP-to-RJ45 media converter, which feeds into a <strong>FRITZ!Box 7950</strong> handling the main WAN connection and head routing.', n2: 'For my room and local devices, I use a <strong>Xiaomi AX3000T</strong> flashed with custom <strong>OpenWrt</strong> firmware, handling local routing, access point duties, and hardwired Ethernet connections.'}
+  {t: 'OS & Environment', c: 'p', k: 's6', split: 1,
+    lede: link('https://www.opensuse.org/', 'openSUSE') + ' Tumbleweed (KDE Plasma 6, Wayland)',
+    rows: [['Terminal', link('https://sw.kovidgoyal.net/kitty/', 'kitty')], ['Shell', link('https://fishshell.com/', 'fish shell')]]},
+  {t: 'Main PC', c: 's', k: 's3 tall', n: "I built this PC myself from scratch right before the rampocalypse and I'm proud of it.",
+    rows: [['OS', 'openSUSE Tumbleweed'], ['CPU', 'AMD Ryzen 5 7600X'], ['GPU', 'Gigabyte RX 7600 8GB OC'], ['RAM', 'Kingston Fury 2x8GB 5600 MT/s'], ['Primary SSD', 'Samsung 980 Pro 1TB'], ['Secondary SSD', 'Samsung 980 500GB'], ['PSU', 'MSI MAG A650BN']]},
+  {t: 'Work Laptop', c: 't', k: 's3', n: 'My portable machine used primarily for work, mobile tasks, and as a reliable backup workstation.',
+    rows: [['OS', 'openSUSE Tumbleweed'], ['CPU', 'AMD Ryzen 7 5800H'], ['GPU', 'NVIDIA GeForce GTX 1650'], ['RAM', '32GB DDR4'], ['Storage', 'Samsung 980 500GB NVMe SSD']]},
+  {t: 'Phone', c: 'n', k: 's3',
+    rows: [['Device', link('https://store.google.com/product/pixel_9', 'Google Pixel 9') + ' running ' + link('https://grapheneos.org/', 'GrapheneOS')]]},
+  {t: 'Main Server', tag: 'Debian headless', c: 'p', k: 's6', split: 1,
+    n: ['My homelab runs on one dedicated headless machine. It operates purely via the command line and is managed remotely from my main PC over SSH. It also has battery backup power to keep everything running smoothly during sudden outages.',
+      'Built to strengthen my sysadmin skills. It hosts my personal websites, runs my entire self-hosted stack, and handles the game servers and heavier tasks.'],
+    rows: [['CPU', 'Intel Core i3-1115G4'], ['RAM', '8GB DDR4'], ['Storage', '256GB NVMe SSD + 500GB SSD + 500GB HDD']]},
+  {t: 'Peripherals', c: 'n', k: 's3',
+    rows: [['Mouse', link('https://www.logitechg.com/en-us/products/gaming-mice/pro-x2-superlight-wireless-mouse.html', 'Logitech PRO X SUPERLIGHT 2')], ['Keyboard', link('https://hator.gg/keyboards/rockfall-3-mecha-tkl-wireless/', 'HATOR Rockfall 3 TKL Wireless')], ['Headphones', link('https://hator.gg/audio/hyperpunk-3x/', 'HATOR Hyperpunk 3X Wireless')], ['Monitor', link('https://sg.aoc.com/product/24G4', 'AOC 24G4 (24\" 1080p 180Hz)')]]},
+  {t: 'In-House Networking', c: 's', k: 's3',
+    n: ['I replaced the default ISP router setup entirely to have full control over traffic and hardware. The incoming fiber line connects directly into an SFP-to-RJ45 media converter, which feeds into a <strong>FRITZ!Box 7950</strong> handling the main WAN connection and head routing.',
+      'For my room and local devices, I use a <strong>Xiaomi AX3000T</strong> flashed with custom <strong>OpenWrt</strong> firmware, handling local routing, access point duties, and hardwired Ethernet connections.']}
 ];
 
 // interests data
 const likes = [
   ['code', 'Open Source Software', 'p', "I'm a big advocate for open source. Whenever a viable open-source alternative exists, I will always choose it over proprietary software. I value privacy, transparency, having actual ownership over my tools, and knowing what is running on my hardware."],
   ['server', 'Servers & Infrastructure', 's', 'I really enjoy working with servers and self-hosting services for my own daily needs. Managing homelab machines, spinning up containers, and tweaking networking and infrastructure as a whole is where I spend most of my time tinkering.'],
-  ['spark', 'Always Learning', 't', "I'm still learning a ton along the way. Most of what I know comes from hands-on experimentation - trying out new setups, troubleshooting when things break, and figuring out how systems fit together under the hood."]
+  ['book', 'Always Learning', 't', "I'm still learning a ton along the way. Most of what I know comes from hands-on experimentation - trying out new setups, troubleshooting when things break, and figuring out how systems fit together under the hood."]
 ];
 
 // render stack, setup, and interests sections
 $('#stack').innerHTML = stack.map(([g, items]) => `<h3 class="grp rv">${g}</h3><div class="grid">${items.map(([i, n, u, d], k) =>
   `<article class="card c-${k ? 'n' : 's'} rv" style="--d:${k * .08}s"><div class="item"><div class="blob">${ico(i)}</div><div><h3>${u ? link(u, n) : n}</h3><p>${d}</p></div></div></article>`).join('')}</div>`).join('');
-$('#rigs').innerHTML = rigs.map(r => r.h
-  ? `<div class="sub-h rv"><h3>${r.h}</h3><p>${r.n}</p></div>`
-  : `<article class="card c-${r.c} rv${r.w ? ' wide' : ''}"><h3>${r.t}</h3>${r.n ? `<p>${r.n}</p>` : ''}${r.n2 ? `<p>${r.n2}</p>` : ''}${r.rows ? `<dl>${r.rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>` : ''}${r.note ? `<p class="note">${r.note}</p>` : ''}</article>`).join('');
+const specs = rows => rows ? `<dl>${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>` : '';
+$('#rigs').innerHTML = rigs.map(r => {
+  const head = `<div class="hd"><h3>${r.t}</h3>${r.tag ? `<span class="tag">${r.tag}</span>` : ''}</div>`;
+  const text = (r.lede ? `<p class="lede">${r.lede}</p>` : '') + [].concat(r.n || []).map(p => `<p>${p}</p>`).join('');
+  const body = r.split ? `<div class="split"><div>${head}${text}</div>${specs(r.rows)}</div>` : head + text + specs(r.rows);
+  return `<article class="card c-${r.c} ${r.k} rv">${body}</article>`;
+}).join('');
 $('#likes').innerHTML = likes.map(([i, t, c, p], k) =>
   `<article class="card big-card c-${c} rv" style="--d:${k * .1}s"><div class="blob">${ico(i)}</div><h3>${t}</h3><p>${p}</p></article>`).join('');
 
 // theme and palette toggles
-const hues = [285, 160, 25, 230, 335];
+const palettes = ['terracotta', 'moss', 'lagoon', 'ink'];
 const sysDark = matchMedia('(prefers-color-scheme: dark)');
-let hi = 0, manual = null;
-try { hi = +localStorage.hue || 0; manual = localStorage.themeChoice || null; } catch {}
+let pi = 0, manual = null;
+try { pi = Math.max(0, palettes.indexOf(localStorage.palette)); manual = localStorage.themeChoice || null; } catch {}
 const applyLook = () => {
-  root.style.setProperty('--h', hues[hi]);
+  root.dataset.palette = palettes[pi];
   if (manual) root.dataset.theme = manual; else delete root.dataset.theme;
-  try { localStorage.hue = hi; } catch {}
+  // show the sun while dark and the moon while light, so the icon names what a tap switches to
+  $('#themeBtn use').setAttribute('href', (manual ? manual === 'dark' : sysDark.matches) ? '#i-sun' : '#i-moon');
+  try { localStorage.palette = palettes[pi]; } catch {}
 };
+// crossfade the whole page when the browser supports it
+const swap = fn => (document.startViewTransition && !calm) ? document.startViewTransition(fn) : fn();
 applyLook();
-$('#hueBtn').onclick = () => { hi = (hi + 1) % hues.length; applyLook(); };
+sysDark.addEventListener('change', applyLook);
+$('#hueBtn').onclick = () => {
+  pi = (pi + 1) % palettes.length;
+  swap(applyLook);
+  say(palettes[pi][0].toUpperCase() + palettes[pi].slice(1));
+};
 $('#themeBtn').onclick = () => {
   const isDark = manual ? manual === 'dark' : sysDark.matches;
   manual = isDark ? 'light' : 'dark';
   try { localStorage.themeChoice = manual; } catch {}
-  applyLook();
+  swap(applyLook);
 };
 
 // wrap each letter in hero title for pointer interaction
@@ -85,34 +99,57 @@ title.innerHTML = title.textContent.split(' ').map(w => `<span class="w" aria-hi
 const letters = $$('.l', title);
 letters.forEach((l, i) => l.style.setProperty('--i', i));
 
-// pointer hover effect on hero title and stage
+// hero title letters swell near the pointer and settle back with a spring
 const stage = $('#stage');
-let pt = null, swelled = false;
-const resetLetters = () => {
-  if (!swelled) return;
-  swelled = false;
-  letters.forEach(l => { l.style.removeProperty('--w'); l.style.removeProperty('--d'); });
-  stage.style.setProperty('--px', 0);
-  stage.style.setProperty('--py', 0);
+const REST_W = 650, REST_D = 100;
+const lw = letters.map(() => REST_W), ld = letters.map(() => REST_D);
+const vw = letters.map(() => 0), vd = letters.map(() => 0);
+let spots = [], dirty = true, ready = false, cx = null, cy = 0, last = 0, looping = false;
+// cache letter centers so the loop never forces layout
+const measure = () => {
+  spots = letters.map(l => { const r = l.getBoundingClientRect(); return {x: r.left + r.width / 2 + scrollX, y: r.top + r.height / 2 + scrollY}; });
+  dirty = false;
 };
-addEventListener('pointermove', e => {
-  if (calm || e.pointerType === 'touch' || pt) return;
-  pt = requestAnimationFrame(() => {
-    pt = null;
-    if (scrollY > innerHeight) { resetLetters(); return; }
-    swelled = true;
-    letters.forEach(l => {
-      const r = l.getBoundingClientRect();
-      const d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
-      const k = Math.max(0, 1 - d / 220);
-      l.style.setProperty('--w', 650 + 350 * k);
-      l.style.setProperty('--d', 100 + 40 * k);
-    });
-    stage.style.setProperty('--px', e.clientX / innerWidth - .5);
-    stage.style.setProperty('--py', e.clientY / innerHeight - .5);
+const frame = now => {
+  const dt = Math.min(.033, (now - last) / 1000 || .016);
+  last = now;
+  if (dirty) measure();
+  const on = cx !== null && scrollY <= innerHeight;
+  const mx = cx + scrollX, my = cy + scrollY;
+  let moving = false;
+  letters.forEach((l, i) => {
+    let tw = REST_W, td = REST_D;
+    if (on) {
+      const k = Math.exp(-((mx - spots[i].x) ** 2 + (my - spots[i].y) ** 2) / 16200);
+      tw += 350 * k; td += 40 * k;
+    }
+    vw[i] += ((tw - lw[i]) * 220 - vw[i] * 22) * dt;
+    vd[i] += ((td - ld[i]) * 220 - vd[i] * 22) * dt;
+    lw[i] += vw[i] * dt;
+    ld[i] += vd[i] * dt;
+    if (Math.abs(tw - lw[i]) + Math.abs(vw[i]) + Math.abs(td - ld[i]) + Math.abs(vd[i]) < .05) {
+      lw[i] = tw; ld[i] = td; vw[i] = vd[i] = 0;
+    } else moving = true;
+    l.style.setProperty('--w', lw[i].toFixed(1));
+    l.style.setProperty('--d', ld[i].toFixed(1));
   });
+  stage.style.setProperty('--px', on ? cx / innerWidth - .5 : 0);
+  stage.style.setProperty('--py', on ? cy / innerHeight - .5 : 0);
+  looping = moving;
+  if (moving) requestAnimationFrame(frame);
+};
+const wake = () => { if (!looping && ready) { looping = true; last = performance.now(); requestAnimationFrame(frame); } };
+addEventListener('pointermove', e => {
+  if (calm || e.pointerType === 'touch') return;
+  cx = e.clientX; cy = e.clientY;
+  wake();
 }, {passive: true});
-root.addEventListener('mouseleave', resetLetters);
+addEventListener('scroll', () => { if (cx !== null) wake(); }, {passive: true});
+addEventListener('resize', () => { dirty = true; });
+if (document.fonts) document.fonts.addEventListener('loadingdone', () => { dirty = true; });
+// wait for the intro pop animation so letter positions are real
+letters[letters.length - 1].addEventListener('animationend', () => { ready = dirty = true; });
+root.addEventListener('mouseleave', () => { cx = null; wake(); });
 
 // polygon morph animation for hero shape
 const N = 160, TAU = Math.PI * 2;
@@ -292,7 +329,7 @@ const snack = $('#snack');
 let snackT;
 const say = m => { snack.textContent = m; snack.classList.add('show'); clearTimeout(snackT); snackT = setTimeout(() => snack.classList.remove('show'), 2200); };
 $('#emailBtn').onclick = () => {
-  const mail = 'danzcrackz@pm.me';
+  const mail = ['danzcrackz', 'pm.me'].join('@');
   if (navigator.clipboard && isSecureContext) navigator.clipboard.writeText(mail).then(() => say('Email copied to clipboard')).catch(() => location.href = 'mailto:' + mail);
   else location.href = 'mailto:' + mail;
 };

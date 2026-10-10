@@ -1,29 +1,70 @@
-@property --h {
-  syntax: '<number>';
-  inherits: true;
-  initial-value: 285;
-}
-
+/* palettes: flat hand picked colors in material 3 roles, each role is a light and dark pair.
+   terracotta is the default, the palette button cycles through the others */
 :root {
-  --h: 285;
   color-scheme: dark light;
-  transition: --h .9s cubic-bezier(.2, 0, 0, 1);
   --ease: cubic-bezier(.2, 0, 0, 1);
   --spring: cubic-bezier(.34, 1.45, .64, 1);
-  --pri: light-dark(oklch(.48 .17 var(--h)), oklch(.83 .12 var(--h)));
-  --on-pri: light-dark(oklch(.99 .01 var(--h)), oklch(.27 .09 var(--h)));
-  --pri-c: light-dark(oklch(.9 .07 var(--h)), oklch(.4 .12 var(--h)));
-  --on-pri-c: light-dark(oklch(.25 .1 var(--h)), oklch(.92 .05 var(--h)));
-  --sec-c: light-dark(oklch(.91 .04 calc(var(--h) + 40)), oklch(.36 .05 calc(var(--h) + 40)));
-  --on-sec-c: light-dark(oklch(.27 .05 calc(var(--h) + 40)), oklch(.9 .03 calc(var(--h) + 40)));
-  --ter-c: light-dark(oklch(.9 .08 calc(var(--h) + 90)), oklch(.4 .09 calc(var(--h) + 90)));
-  --on-ter-c: light-dark(oklch(.28 .08 calc(var(--h) + 90)), oklch(.92 .04 calc(var(--h) + 90)));
-  --ter: light-dark(oklch(.5 .13 calc(var(--h) + 90)), oklch(.82 .11 calc(var(--h) + 90)));
-  --bg: light-dark(oklch(.985 .01 var(--h)), oklch(.17 .015 var(--h)));
-  --s1: light-dark(oklch(.96 .02 var(--h)), oklch(.22 .02 var(--h)));
-  --s2: light-dark(oklch(.935 .025 var(--h)), oklch(.26 .022 var(--h)));
-  --fg: light-dark(oklch(.2 .02 var(--h)), oklch(.93 .012 var(--h)));
-  --fg2: light-dark(oklch(.45 .03 var(--h)), oklch(.76 .025 var(--h)));
+  --pri: light-dark(#b5441f, #f0906a);
+  --on-pri: light-dark(#fff8f0, #4a1707);
+  --pri-c: light-dark(#f7cdb8, #6e2c14);
+  --on-pri-c: light-dark(#4a1707, #ffdccb);
+  --sec-c: light-dark(#dce3bb, #404a22);
+  --on-sec-c: light-dark(#2b3312, #e1e8c0);
+  --ter-c: light-dark(#f6dc88, #5c4a10);
+  --on-ter-c: light-dark(#3e3000, #fbe79f);
+  --bg: light-dark(#fbf5ec, #1e1915);
+  --s1: light-dark(#f4ebdd, #26201b);
+  --s2: light-dark(#ece0cc, #302821);
+  --fg: light-dark(#2a211b, #f2e8da);
+  --fg2: light-dark(#6b5b4e, #bbaa97);
+}
+
+:root[data-palette="moss"] {
+  --pri: light-dark(#2f6b3a, #8fd08a);
+  --on-pri: light-dark(#f4fbf0, #0c3012);
+  --pri-c: light-dark(#c7e6be, #25502b);
+  --on-pri-c: light-dark(#0e3314, #c9efc1);
+  --sec-c: light-dark(#ebd9b4, #4f3f1a);
+  --on-sec-c: light-dark(#3b2c0b, #f2dfb6);
+  --ter-c: light-dark(#f5c6b8, #5e2e20);
+  --on-ter-c: light-dark(#4a1a0e, #fbd3c6);
+  --bg: light-dark(#f4f4ea, #171b14);
+  --s1: light-dark(#ebebdb, #1f241b);
+  --s2: light-dark(#e1e2cd, #292f24);
+  --fg: light-dark(#1f2418, #e9eddd);
+  --fg2: light-dark(#5a6049, #aeb59a);
+}
+
+:root[data-palette="lagoon"] {
+  --pri: light-dark(#0f6b73, #73d0d8);
+  --on-pri: light-dark(#f0fdfd, #013a40);
+  --pri-c: light-dark(#bde7ea, #115158);
+  --on-pri-c: light-dark(#022f33, #c2f0f4);
+  --sec-c: light-dark(#f8e0a8, #5a4510);
+  --on-sec-c: light-dark(#3a2a00, #ffe9b0);
+  --ter-c: light-dark(#f9c9c0, #5e2a22);
+  --on-ter-c: light-dark(#4c150c, #ffd5cc);
+  --bg: light-dark(#f2f6f5, #0f1a19);
+  --s1: light-dark(#e7eeec, #162423);
+  --s2: light-dark(#dae5e2, #1f302f);
+  --fg: light-dark(#14211f, #e1eeec);
+  --fg2: light-dark(#4c6560, #9db5b1);
+}
+
+:root[data-palette="ink"] {
+  --pri: light-dark(#171512, #f1eee7);
+  --on-pri: light-dark(#f7f5f0, #171512);
+  --pri-c: light-dark(#ffb547, #e99a1e);
+  --on-pri-c: light-dark(#3a2300, #2b1a00);
+  --sec-c: light-dark(#ddd6c6, #3a362e);
+  --on-sec-c: light-dark(#26221a, #e9e4d6);
+  --ter-c: light-dark(#f7c9b3, #6a3b26);
+  --on-ter-c: light-dark(#4a1d0a, #ffdccb);
+  --bg: light-dark(#f7f5f0, #121110);
+  --s1: light-dark(#efebe3, #1b1a17);
+  --s2: light-dark(#e6e1d6, #25231f);
+  --fg: light-dark(#171512, #f1eee7);
+  --fg2: light-dark(#605a50, #a8a298);
 }
 
 :root[data-theme="light"] {
@@ -90,25 +131,6 @@ svg {
 :focus-visible {
   outline: 3px solid var(--pri);
   outline-offset: 3px;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: -20%;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 20% 15%, color-mix(in oklab, var(--pri-c) 75%, transparent), transparent 40%),
-    radial-gradient(circle at 85% 55%, color-mix(in oklab, var(--ter-c) 65%, transparent), transparent 38%),
-    radial-gradient(circle at 30% 95%, color-mix(in oklab, var(--sec-c) 80%, transparent), transparent 40%);
-  animation: drift 24s ease-in-out infinite alternate;
-}
-
-@keyframes drift {
-  to {
-    transform: translate(4%, 6%) rotate(8deg) scale(1.08);
-  }
 }
 
 .wave {
@@ -286,7 +308,6 @@ h1 .w {
 
 h1 .l {
   display: inline-block;
-  transition: font-variation-settings .2s var(--ease);
   font-variation-settings: 'wght' var(--w, 650), 'wdth' var(--d, 100);
   animation: pop 1s var(--spring) backwards;
   animation-delay: calc(var(--i) * 45ms + .1s);
@@ -339,7 +360,7 @@ h1 .l {
   inset: 6%;
   cursor: pointer;
   animation: spin 40s linear infinite;
-  background: linear-gradient(135deg, var(--pri), var(--ter));
+  background: var(--pri);
 }
 
 .glyph {
@@ -348,7 +369,7 @@ h1 .l {
   display: grid;
   place-items: center;
   font: 850 clamp(7rem, 20vw, 14rem)/1 'Roboto Flex', system-ui, sans-serif;
-  font-variation-settings: 'wdth' 120;
+  font-variation-settings: 'wdth' 100;
   letter-spacing: -.04em;
   color: var(--on-pri);
   pointer-events: none;
@@ -371,8 +392,9 @@ h2 {
   line-height: .95;
   letter-spacing: -.035em;
   font-weight: 800;
-  font-variation-settings: 'wdth' 110;
+  font-variation-settings: 'wdth' 100;
   margin-bottom: 22px;
+  text-wrap: balance;
 }
 
 .lead {
@@ -473,17 +495,6 @@ h3 {
   align-items: flex-start;
 }
 
-.item h3 a {
-  text-decoration: none;
-  border-bottom: 3px solid currentColor;
-  border-color: color-mix(in oklab, currentColor 30%, transparent);
-  transition: border-color .3s;
-}
-
-.item h3 a:hover {
-  border-color: currentColor;
-}
-
 .blob {
   width: 62px;
   height: 62px;
@@ -509,31 +520,37 @@ h3 {
 dl {
   margin-top: 18px;
   display: grid;
-  gap: 2px;
 }
 
+/* label and value side by side, the value reads left to right and wraps normally */
 dl div {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 2px 18px;
   padding: 12px 0;
   border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent);
 }
 
 dt {
   opacity: .7;
-  flex: none;
 }
 
 dd {
-  text-align: right;
   font-weight: 550;
+  min-width: 0;
 }
 
-dd a,
-.card p a {
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
+/* links inside text: a thin quiet underline that firms up on hover */
+.card a:not(.lnk) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .22em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  transition: text-decoration-color .2s;
+}
+
+.card a:not(.lnk):hover {
+  text-decoration-color: currentColor;
 }
 
 .big-card h3 {
@@ -732,9 +749,8 @@ dd a,
   gap: 4px;
   padding: 8px;
   border-radius: 999px;
-  background: color-mix(in oklab, var(--s2) 88%, transparent);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 8px 32px rgb(0 0 0 / .25);
+  background: var(--s2);
+  box-shadow: 0 3px 12px rgb(0 0 0 / .16);
   z-index: 20;
   animation: rise 1s var(--spring) 1.1s backwards;
 }
@@ -874,4 +890,99 @@ dd a,
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* palette and theme changes crossfade instead of snapping */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: .45s;
+}
+
+/* what i use: cards size themselves, so layout follows the card width and not the screen */
+.card {
+  container-type: inline-size;
+}
+
+@container (max-width: 25rem) {
+  dl div {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* six column layout for the setup cards */
+#rigs {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+#rigs .s3 {
+  grid-column: span 3;
+}
+
+#rigs .s6 {
+  grid-column: 1 / -1;
+}
+
+#rigs .tall {
+  grid-row: span 2;
+}
+
+@media (max-width: 900px) {
+  #rigs {
+    grid-template-columns: 1fr;
+  }
+
+  #rigs .s3,
+  #rigs .tall {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+/* wide cards: text on one side, specs on the other */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 56px;
+  align-items: start;
+}
+
+.split dl {
+  margin-top: 0;
+}
+
+.split dl div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+@container (max-width: 44rem) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split dl {
+    margin-top: 18px;
+  }
+}
+
+.hd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+
+.tag {
+  font-size: .95rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+.card .lede {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-top: 14px;
 }
